@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rashmitha – Python Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f8fb; --surface:#ffffff; --ink:#12203a; --muted:#52607a; --line:#d9e0ec;
+  --blue:#2b5f94; --yellow:#f5c518; --code-bg:#12203a; --code-ink:#e6ecf7; --code-dim:#8fa3c4;
+  --code-key:#f5c518; --code-str:#8fd3a6; --code-fn:#7db6f0;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1526; --surface:#15203a; --ink:#e8eefb; --muted:#9fb0cf; --line:#26345a;
+    --blue:#7db6f0; --yellow:#f5c518; --code-bg:#080f1d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1526; --surface:#15203a; --ink:#e8eefb; --muted:#9fb0cf; --line:#26345a;
+  --blue:#7db6f0; --yellow:#f5c518; --code-bg:#080f1d;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 "Sora",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;text-decoration:none;letter-spacing:.01em}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.92rem}
+.nav a.l{text-decoration:none;color:var(--muted)}
+.nav a.l:hover{color:var(--ink)}
+section{padding:80px 0 0}
+h1,h2,h3{line-height:1.15;margin:0}
+h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.02em}
+h2{font-size:1.9rem;font-weight:700;letter-spacing:-.01em;margin-bottom:28px;padding-bottom:12px;border-bottom:3px solid var(--yellow);display:inline-block}
+.hero{padding-top:64px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:34em;margin:20px 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--ink)}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn.s{background:transparent;color:var(--ink)}
+.btn:hover{border-color:var(--blue)}
+.code{background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:22px 24px;font:400 .88rem/1.7 "JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;border:1px solid var(--line)}
+.code .d{display:flex;gap:7px;margin-bottom:14px}
+.code .d i{width:11px;height:11px;border-radius:50%;background:#3b4a6b;display:block}
+.code pre{margin:0;white-space:pre}
+.k{color:var(--code-key)}.s{color:var(--code-str)}.f{color:var(--code-fn)}.c{color:var(--code-dim)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about p{margin:0 0 16px;color:var(--muted);max-width:34em}
+.facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.facts span:first-child{color:var(--muted)}
+.facts span:last-child{font-weight:600;text-align:right}
+.skills{display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.bar{margin-bottom:20px}
+.bar .row{display:flex;justify-content:space-between;font-weight:600;margin-bottom:8px}
+.bar .row span:last-child{font-family:"JetBrains Mono",monospace;font-weight:400;color:var(--muted);font-size:.85rem}
+.track{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.fill{height:100%;background:var(--blue);border-radius:4px}
+.bar.py .fill{background:linear-gradient(90deg,var(--blue) 70%,var(--yellow))}
+h3{font-size:1.05rem;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tags span{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.88rem}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.proj{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:6px;padding:24px;display:flex;flex-direction:column}
+.proj:first-child{border-top-color:var(--yellow)}
+.proj p{margin:10px 0 18px;color:var(--muted);font-size:.95rem;flex:1}
+.proj .stack{font:400 .8rem "JetBrains Mono",monospace;color:var(--blue)}
+.tl{border-left:3px solid var(--line);margin-left:6px}
+.tl .it{position:relative;padding:0 0 28px 28px}
+.tl .it::before{content:"";position:absolute;left:-10px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--yellow);border:3px solid var(--bg)}
+.tl .when{font:400 .85rem "JetBrains Mono",monospace;color:var(--muted)}
+.tl h3{margin:4px 0 6px}
+.tl p{margin:0;color:var(--muted);max-width:40em}
+.contact{background:var(--code-bg);color:var(--code-ink);border-radius:14px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.contact h2{border-color:var(--yellow);color:#fff}
+.contact p{margin:0;color:var(--code-dim)}
+.contact ul{list-style:none;margin:0;padding:0}
+.contact li{padding:10px 0;border-bottom:1px solid #26345a}
+.contact a{text-decoration:none;color:#fff;font-weight:600}
+.contact a:hover{color:var(--yellow)}
+footer{padding:40px 0 48px;color:var(--muted);font-size:.88rem;text-align:center}
+.theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+@media (max-width:820px){
+  .hero,.about,.skills,.contact{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+  .nav ul{display:none}
+  .contact{padding:28px}
+  section{padding-top:60px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Rashmitha</a>
+    <ul>
+      <li><a class="l" href="#about">About</a></li>
+      <li><a class="l" href="#skills">Skills</a></li>
+      <li><a class="l" href="#projects">Projects</a></li>
+      <li><a class="l" href="#journey">Journey</a></li>
+      <li><a class="l" href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme" id="theme" type="button" aria-label="Toggle light or dark theme">Theme</button>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero" style="padding-top:64px">
+    <div>
+      <h1>Hi, I’m Rashmitha. I build things with Python.</h1>
+      <p class="lead">Software developer focused on clean, readable code, from data analysis and automation scripts to web applications.</p>
+      <div class="btns">
+        <a class="btn p" href="#projects">View my projects</a>
+        <a class="btn s" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="code" role="img" aria-label="Python code describing Rashmitha as a developer">
+      <div class="d"><i></i><i></i><i></i></div>
+<pre><span class="k">class</span> <span class="f">Developer</span>:
+    name = <span class="s">"Rashmitha"</span>
+    language = <span class="s">"Python"</span>
+    also_uses = [<span class="s">"SQL"</span>, <span class="s">"JavaScript"</span>,
+                 <span class="s">"HTML"</span>, <span class="s">"CSS"</span>]
+
+    <span class="k">def</span> <span class="f">focus</span>(self):
+        <span class="k">return</span> [<span class="s">"clean code"</span>,
+                <span class="s">"problem solving"</span>,
+                <span class="s">"learning every day"</span>]
+
+<span class="c"># open to internships and entry-level roles</span></pre>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About me</h2>
+    <div class="about">
+      <div>
+        <p>I enjoy turning problems into small, working programs. Python is my main language, and I use it to analyse data, automate repetitive tasks and build simple web apps.</p>
+        <p>I like code that the next person can read without a guide. I’m always picking up new tools and looking for projects where I can learn from real users and real data.</p>
+      </div>
+      <ul class="facts">
+        <li><span>Main language</span><span>Python</span></li>
+        <li><span>Interests</span><span>Data, automation, web</span></li>
+        <li><span>Education</span><span>B.E. Computer Science</span></li>
+        <li><span>Looking for</span><span>Internship / entry-level</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div>
+        <div class="bar py"><div class="row"><span>Python</span><span>Advanced</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+        <div class="bar"><div class="row"><span>SQL</span><span>Intermediate</span></div><div class="track"><div class="fill" style="width:75%"></div></div></div>
+        <div class="bar"><div class="row"><span>JavaScript</span><span>Intermediate</span></div><div class="track"><div class="fill" style="width:65%"></div></div></div>
+        <div class="bar"><div class="row"><span>HTML &amp; CSS</span><span>Intermediate</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+        <div class="bar"><div class="row"><span>Java</span><span>Basic</span></div><div class="track"><div class="fill" style="width:50%"></div></div></div>
+      </div>
+      <div>
+        <h3>Python libraries and frameworks</h3>
+        <div class="tags"><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Scikit-learn</span><span>Flask</span><span>Django</span></div>
+        <h3>Tools</h3>
+        <div class="tags"><span>Git &amp; GitHub</span><span>VS Code</span><span>Jupyter Notebook</span><span>MySQL</span><span>Linux</span></div>
+        <h3>Strengths</h3>
+        <div class="tags"><span>Problem solving</span><span>Teamwork</span><span>Debugging</span><span>Clear communication</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <article class="proj">
+        <h3>Sales Data Analyzer</h3>
+        <p>Reads sales CSV files, cleans the data and produces monthly trend charts and a summary report.</p>
+        <span class="stack">Python · Pandas · Matplotlib</span>
+      </article>
+      <article class="proj">
+        <h3>Student Management App</h3>
+        <p>A web app to add, search and update student records, with login and a database behind it.</p>
+        <span class="stack">Python · Flask · MySQL</span>
+      </article>
+      <article class="proj">
+        <h3>File Organizer Script</h3>
+        <p>Sorts a messy downloads folder into categories by file type and date, in one command.</p>
+        <span class="stack">Python · os · shutil</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="journey">
+    <h2>Education and experience</h2>
+    <div class="tl">
+      <div class="it"><div class="when">2022 – 2026</div><h3>B.E. in Computer Science</h3><p>Coursework in data structures, algorithms, databases and software engineering.</p></div>
+      <div class="it"><div class="when">2025</div><h3>Python Developer Intern</h3><p>Wrote automation scripts and helped build a small internal reporting tool.</p></div>
+      <div class="it"><div class="when">2024</div><h3>Certification in Python and Data Analysis</h3><p>Completed an online course with hands-on projects.</p></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <h2>Let’s work together</h2>
+        <p>I’m open to internships, entry-level roles and project collaborations. Send me a message and I’ll reply soon.</p>
+      </div>
+      <ul>
+        <li><a href="mailto:rashmitha@example.com">rashmitha@example.com</a></li>
+        <li><a href="https://github.com/" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Rashmitha. All rights reserved.</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('theme'),r=document.documentElement;
+  b.addEventListener('click',function(){
+    var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    r.setAttribute('data-theme',dark?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
